@@ -13,5 +13,5 @@ RUN for n in $(seq 1 10); do useradd -c "Nix build user $n" \
     nixbld$n; done 
 RUN curl -L https://nixos.org/nix/install | sh
 ENV PATH="${PATH}:/root/.nix-profile/bin"
-RUN nix-env -i direnv &&  echo "eval \"\$(direnv hook bash)\"" > ~/.bashrc
+RUN nix-env -i direnv ghc haskell-language-server cabal-install &&  echo "eval \"\$(direnv hook bash)\"" > ~/.bashrc
 RUN direnv allow && nix-shell
